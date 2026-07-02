@@ -2,14 +2,34 @@ use crate::common::ListNode;
 
 pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut prev = None;
-    let mut curr = head;
+    let mut curr = head; // transfer ownership of head to curr, head no longer is in use
     while let Some(mut node) = curr {
-        curr = node.next.take();
+        let next = node.next.take();
         node.next = prev;
         prev = Some(node);
+        curr = next;
     }
+
     prev
 }
+
+// pub fn reverse_list_2(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+//     let mut prev = None;
+//     let mut curr = head;
+//     loop {
+//         match curr {
+//             None => break,
+//             Some(mut node) => {
+//                 let next = node.next.take();
+//                 node.next = prev;
+//                 prev = Some(node);
+//                 curr = next;
+//             }
+//         }
+//     }
+//
+//     prev
+// }
 
 #[cfg(test)]
 mod tests {
