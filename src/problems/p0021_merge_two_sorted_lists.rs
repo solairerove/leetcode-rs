@@ -1,22 +1,39 @@
 use crate::common::ListNode;
 
 pub fn merge_two_lists(
-    l1: Option<Box<ListNode>>,
-    l2: Option<Box<ListNode>>,
+    mut list1: Option<Box<ListNode>>,
+    mut list2: Option<Box<ListNode>>,
 ) -> Option<Box<ListNode>> {
-    match (l1, l2) {
-        (None, None) => None,
-        (Some(n), None) | (None, Some(n)) => Some(n),
-        (Some(mut n1), Some(mut n2)) => {
-            if n1.val <= n2.val {
-                n1.next = merge_two_lists(n1.next.take(), Some(n2));
-                Some(n1)
-            } else {
-                n2.next = merge_two_lists(Some(n1), n2.next.take());
-                Some(n2)
+    let mut dummy = Box::new(ListNode::new(0));
+    let mut tail = &mut dummy;
+
+    loop {
+        match (list1.take(), list2.take()) {
+            (Some(mut n1), Some(mut n2)) => {
+                if n1.val <= n2.val {
+                    list2 = Some(n2);
+                    list1 = n1.next.take();
+                    tail.next = Some(n1);
+                } else {
+                    list1 = Some(n1);
+                    list2 = n2.next.take();
+                    tail.next = Some(n2);
+                }
+                tail = tail.next.as_mut().unwrap();
+                ()}
+            (Some(n1), None) => {
+                tail.next = Some(n1);
+                break;
             }
+            (None, Some(n2)) => {
+                tail.next = Some(n2);
+                break;
+            }
+            (None, None) => break,
         }
     }
+
+    dummy.next
 }
 
 #[cfg(test)]
