@@ -1,5 +1,6 @@
 use crate::common::ListNode;
 
+// time O(n+m), space O(1)
 pub fn merge_two_lists(
     mut list1: Option<Box<ListNode>>,
     mut list2: Option<Box<ListNode>>,
@@ -19,8 +20,8 @@ pub fn merge_two_lists(
                     list2 = n2.next.take();
                     tail.next = Some(n2);
                 }
-                tail = tail.next.as_mut().unwrap();
-                ()}
+                tail = tail.next.as_mut().unwrap()
+            }
             (Some(n1), None) => {
                 tail.next = Some(n1);
                 break;
