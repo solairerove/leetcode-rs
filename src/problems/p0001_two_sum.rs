@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+// time O(n), space O(n)
 pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut num_to_idx: HashMap<i32, usize> = HashMap::new();
     for (i, &e) in nums.iter().enumerate() {

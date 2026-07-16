@@ -1,5 +1,6 @@
 use crate::common::ListNode;
 
+// time O(n), space O(1)
 pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut prev = None;
     let mut curr = head; // transfer ownership of head to curr, head no longer is in use
