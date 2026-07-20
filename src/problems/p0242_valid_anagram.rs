@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+// time O(n), space O(n)
 pub fn is_anagram(s: String, t: String) -> bool {
     if s == t {
         return true;
@@ -10,39 +11,26 @@ pub fn is_anagram(s: String, t: String) -> bool {
     }
 
     let mut letter_counts: HashMap<char, i32> = HashMap::with_capacity(s.len());
+
     let mut s_chars = s.chars();
-    loop {
-        match s_chars.next() {
-            Some(s_c) => {
-                if letter_counts.contains_key(&s_c) {
-                    if let Some(v) = letter_counts.get_mut(&s_c) {
-                        *v += 1;
-                    }
-                } else {
-                    letter_counts.insert(s_c, 1);
-                }
+    while let Some(s_c) = s_chars.next() {
+        if letter_counts.contains_key(&s_c) {
+            if let Some(v) = letter_counts.get_mut(&s_c) {
+                *v += 1;
             }
-            _ => {
-                break;
-            }
+        } else {
+            letter_counts.insert(s_c, 1);
         }
     }
 
     let mut t_chars = t.chars();
-    loop {
-        match t_chars.next() {
-            Some(t_c) => {
-                if letter_counts.contains_key(&t_c) {
-                    if let Some(v) = letter_counts.get_mut(&t_c) {
-                        *v -= 1;
-                    }
-                } else {
-                    return false;
-                }
+    while let Some(t_c) = t_chars.next() {
+        if letter_counts.contains_key(&t_c) {
+            if let Some(v) = letter_counts.get_mut(&t_c) {
+                *v -= 1;
             }
-            _ => {
-                break;
-            }
+        } else {
+            return false;
         }
     }
 
