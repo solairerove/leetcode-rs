@@ -1,13 +1,13 @@
-// time O(n), space O(n)
+// time O(2n), space O(2n)
 pub fn get_concatenation(nums: Vec<i32>) -> Vec<i32> {
     let original_size = nums.len();
     let size = original_size * 2;
-    let mut ans: Vec<i32> = Vec::with_capacity(size as usize);
+    let mut ans: Vec<i32> = Vec::with_capacity(size);
     for i in 0..size {
         ans.push(nums[i % original_size]);
     }
 
-    return ans;
+    ans
 }
 
 #[cfg(test)]
@@ -16,15 +16,15 @@ mod tests {
 
     #[test]
     fn doubles_sequence() {
-        assert_eq!(
-            get_concatenation(vec![1, 2, 1]),
-            vec![1, 2, 1, 1, 2, 1]
-        );
+        assert_eq!(get_concatenation(vec![1, 2, 1]), vec![1, 2, 1, 1, 2, 1]);
     }
 
     #[test]
     fn handles_single_element() {
-        assert_eq!(get_concatenation(vec![1, 3, 2, 1]), vec![1, 3, 2, 1, 1, 3, 2, 1]);
+        assert_eq!(
+            get_concatenation(vec![1, 3, 2, 1]),
+            vec![1, 3, 2, 1, 1, 3, 2, 1]
+        );
     }
 
     #[test]
