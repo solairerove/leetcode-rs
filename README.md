@@ -13,7 +13,10 @@ cd book
 mdbook build
 ```
 
-Output lands in `book/book/` (open `book/book/index.html` to view). To add a new problem to the book: create `book/src/pNNNN_title.md` with an `{{#include ../../src/problems/pNNNN_title.rs:START:END}}` block pointing at the relevant line range, and add it to `book/src/SUMMARY.md`.
+Output lands in `book/book/` (open `book/book/index.html` to view). To add a new problem to the book:
+
+1. Create `book/src/pNNNN_title.md` with an `{{#include ../../src/problems/pNNNN_title.rs:START:END}}` block pointing at the relevant line range (exclude the `#[cfg(test)]` block).
+2. Add it to `book/src/SUMMARY.md`, with the chapter link text prefixed by the LeetCode problem number, e.g. `- [242. Valid Anagram](./p0242_valid_anagram.md)`. `no-section-label = true` is set in `book.toml`, so mdBook does not auto-number sidebar entries — the number shown is whatever is in the link text, so it must match LeetCode's own numbering (not insertion order).
 
 Preview with live reload while editing: `mdbook serve` (from `book/`).
 
