@@ -1,0 +1,7 @@
+[book]
+title = "leetcode-rs"
+authors = ["solairerove"]
+src = "src"
+
+[output.html]
+default-theme = "rust"
