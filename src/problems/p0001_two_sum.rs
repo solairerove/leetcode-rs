@@ -3,16 +3,12 @@ use std::collections::HashMap;
 // time O(n), space O(n)
 pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut num_to_idx: HashMap<i32, i32> = HashMap::new();
-    for i in 0..nums.len() {
-        let num = nums[i];
+    for (i, &num) in nums.iter().enumerate() {
         let guess = target - num;
-        if num_to_idx.contains_key(&guess) {
-            if let Some(&x) = num_to_idx.get(&guess) {
-                return vec![x, i as i32];
-            }
-        } else {
-            num_to_idx.insert(num, i as i32);
+        if let Some(&x) = num_to_idx.get(&guess) {
+            return vec![x, i as i32];
         }
+        num_to_idx.insert(num, i as i32);
     }
 
     vec![]
