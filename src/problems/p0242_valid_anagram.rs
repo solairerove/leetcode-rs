@@ -2,39 +2,22 @@ use std::collections::HashMap;
 
 // time O(n), space O(n)
 pub fn is_anagram(s: String, t: String) -> bool {
-    if s.len() != t.len() {
-        return false;
-    }
-
     let mut letter_counts: HashMap<char, i32> = HashMap::with_capacity(s.len());
-
     for s_c in s.chars() {
-        if letter_counts.contains_key(&s_c) {
-            if let Some(v) = letter_counts.get_mut(&s_c) {
-                *v += 1;
-            }
-        } else {
-            letter_counts.insert(s_c, 1);
-        }
+        letter_counts
+            .entry(s_c)
+            .and_modify(|v| *v += 1)
+            .or_insert(1);
     }
 
     for t_c in t.chars() {
-        if letter_counts.contains_key(&t_c) {
-            if let Some(v) = letter_counts.get_mut(&t_c) {
-                *v -= 1;
-            }
-        } else {
-            return false;
-        }
+        letter_counts
+            .entry(t_c)
+            .and_modify(|v| *v -= 1)
+            .or_insert(-1);
     }
 
-    for (_, v) in letter_counts {
-        if v != 0 {
-            return false;
-        }
-    }
-
-    true
+    letter_counts.values().all(|&v| v == 0)
 }
 
 #[cfg(test)]
