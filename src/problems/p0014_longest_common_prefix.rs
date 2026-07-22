@@ -5,7 +5,7 @@ pub fn longest_common_prefix(strs: Vec<String>) -> String {
         for j in 1..strs.len() {
             let sb = strs[j].as_bytes();
             if i == sb.len() || first[i] != sb[i] {
-                return String::from_utf8((&first[..i]).to_vec()).unwrap();
+                return strs[0][..i].to_string();
             }
         }
     }
