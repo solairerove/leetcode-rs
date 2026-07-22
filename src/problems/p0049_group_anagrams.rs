@@ -2,16 +2,14 @@ use std::collections::HashMap;
 
 // time O(n * k), space O(n * k)
 pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
-    let mut map: HashMap<Vec<i32>, Vec<String>> = HashMap::with_capacity(strs.len());
+    let mut map: HashMap<Vec<u8>, Vec<String>> = HashMap::with_capacity(strs.len());
 
     for s in strs {
-        let mut vec: Vec<i32> = vec![0; 26];
+        let mut vec: Vec<u8> = vec![0; 26];
         for c in s.chars() {
             vec[(c as u8 - b'a') as usize] += 1;
         }
-        map.entry(vec)
-            .and_modify(|v| v.push(s.clone()))
-            .or_insert(vec![s.clone()]);
+        map.entry(vec).or_default().push(s);
     }
 
     map.into_values().collect()

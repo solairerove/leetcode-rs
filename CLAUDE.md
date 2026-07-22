@@ -10,7 +10,7 @@ User writes own solutions. When given a solution:
 - Add tests covering it.
 - Wire into `src/problems/mod.rs`.
 - No suggestions, no assumptions, no rewriting user's logic. Just place it and cover with tests.
-- Critique the solution (style, idiomaticity, complexity) only when explicitly asked. Don't volunteer it.
+- Critique the solution (style, idiomaticity, complexity) only when explicitly asked. Don't volunteer it. When asked to "critique"/"analyze", stay scoped to the current solution's style and idiomaticity — don't propose a different/more efficient algorithm unless separately asked for one.
 - If code looks like it will hang or run forever (e.g. iterator `.next()` called on a fresh iterator each loop instead of an advancing one), don't silently fix it — flag the issue and don't run `cargo test` against it. If user says to file it anyway, file it as-is and skip running the tests, note that they need to run/debug it themselves.
 - User may ask for a second/alternate solution to the same problem living in the same file (e.g. `is_anagram` and `is_anagram_array`). Suffix the alt function name to describe the approach (`_array`, `_two_pointer`, etc). User may ask for just a stub (function returning a placeholder value like `false`/`0`/empty) with full mirrored test coverage added up front — add the stub and tests, do not implement the logic; some tests will fail until user fills it in, that's expected.
 
