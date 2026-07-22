@@ -64,7 +64,10 @@ mod tests {
 
     #[test]
     fn array_detects_anagram() {
-        assert!(is_anagram_array("anagram".to_string(), "nagaram".to_string()));
+        assert!(is_anagram_array(
+            "anagram".to_string(),
+            "nagaram".to_string()
+        ));
     }
 
     #[test]
