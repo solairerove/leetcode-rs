@@ -7,3 +7,4 @@
 - [1929. Concatenation of Array](./p1929_concatenation_of_array.md)
 - [242. Valid Anagram](./p0242_valid_anagram.md)
 - [217. Contains Duplicate](./p0217_contains_duplicate.md)
+- [169. Majority Element](./p0169_majority_element.md)
