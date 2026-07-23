@@ -2,24 +2,15 @@ use std::collections::HashMap;
 
 // time O(n), space O(n)
 pub fn majority_element(nums: Vec<i32>) -> i32 {
-    if nums.len() == 1 {
-        return nums[0];
-    }
-
     let mut cnt: HashMap<i32, i32> = HashMap::new();
     let mut res = 0;
     let mut max = 0;
     for num in nums {
-        if cnt.contains_key(&num) {
-            if let Some(v) = cnt.get_mut(&num) {
-                *v += 1;
-                if *v > max {
-                    res = num;
-                    max = *v;
-                }
-            }
-        } else {
-            cnt.insert(num, 0);
+        let v = cnt.entry(num).or_insert(0);
+        *v += 1;
+        if *v > max {
+            res = num;
+            max = *v;
         }
     }
 
