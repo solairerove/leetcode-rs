@@ -21,10 +21,10 @@ pub fn remove_element_two_pointer_swap(nums: &mut Vec<i32>, val: i32) -> i32 {
     }
 
     if n == 1 {
-        if nums[0] == val {
-            return 0;
+        return if nums[0] == val {
+            0
         } else {
-            return 1;
+            1
         }
     }
 
@@ -45,17 +45,7 @@ pub fn remove_element_two_pointer_swap(nums: &mut Vec<i32>, val: i32) -> i32 {
             right_most_not_equal_to_val_idx -= 1;
         }
 
-        print!(
-            "left: {}, right: {} \n",
-            left_most_equal_to_val_idx, right_most_not_equal_to_val_idx
-        );
         if left_most_equal_to_val_idx < right_most_not_equal_to_val_idx {
-            print!(
-                "swap {}, i {} j {}\n",
-                nums[left_most_equal_to_val_idx],
-                left_most_equal_to_val_idx,
-                right_most_not_equal_to_val_idx
-            );
             swap(
                 nums,
                 left_most_equal_to_val_idx,
@@ -64,10 +54,6 @@ pub fn remove_element_two_pointer_swap(nums: &mut Vec<i32>, val: i32) -> i32 {
         } else {
             break;
         }
-    }
-
-    for n in nums {
-        print!("{} ", n);
     }
 
     if left_most_equal_to_val_idx == 0 {
