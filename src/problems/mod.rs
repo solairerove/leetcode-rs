@@ -7,4 +7,5 @@ pub mod p0169_majority_element;
 pub mod p0206_reverse_linked_list;
 pub mod p0217_contains_duplicate;
 pub mod p0242_valid_anagram;
+pub mod p0705_design_hashset;
 pub mod p1929_concatenation_of_array;
