@@ -29,3 +29,9 @@ Output
 ```rust
 {{#include ../../src/problems/p0705_design_hashset.rs:48:86}}
 ```
+
+**Bitset (not viable for arbitrary `i32` — assumes non-negative keys within a fixed upper bound):**
+
+```rust
+{{#include ../../src/problems/p0705_design_hashset.rs:88:120}}
+```
