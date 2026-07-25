@@ -9,3 +9,4 @@
 - [217. Contains Duplicate](./p0217_contains_duplicate.md)
 - [169. Majority Element](./p0169_majority_element.md)
 - [705. Design HashSet](./p0705_design_hashset.md)
+- [706. Design HashMap](./p0706_design_hashmap.md)
