@@ -1,19 +1,23 @@
 // Dutch National Flag algorithm
 // time O(n), space O(1)
 pub fn sort_colors(nums: &mut Vec<i32>) {
-    let mut i: i32 = 0;
-    let mut l: i32 = 0;
-    let mut r: i32 = nums.len() as i32 - 1;
+    let mut i: usize = 0;
+    let mut l: usize = 0;
+    let mut r: usize = nums.len() - 1;
     while i <= r {
-        if nums[i as usize] == 0 {
-            nums.swap(l as usize, i as usize);
+        if nums[i] == 0 {
+            nums.swap(l, i);
             l += 1;
-        } else if nums[i as usize] == 2 {
-            nums.swap(i as usize, r as usize);
+            i += 1;
+        } else if nums[i] == 2 {
+            nums.swap(i, r);
+            if r == 0 {
+                break;
+            }
             r -= 1;
-            i -= 1;
+        } else {
+            i += 1;
         }
-        i += 1;
     }
 }
 
