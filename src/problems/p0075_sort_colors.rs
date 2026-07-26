@@ -3,18 +3,15 @@
 pub fn sort_colors(nums: &mut Vec<i32>) {
     let mut i: usize = 0;
     let mut l: usize = 0;
-    let mut r: usize = nums.len() - 1;
-    while i <= r {
+    let mut r: usize = nums.len();
+    while i < r {
         if nums[i] == 0 {
             nums.swap(l, i);
             l += 1;
             i += 1;
         } else if nums[i] == 2 {
-            nums.swap(i, r);
-            if r == 0 {
-                break;
-            }
             r -= 1;
+            nums.swap(i, r);
         } else {
             i += 1;
         }

@@ -23,11 +23,11 @@ Output: [0,1,2]
 **Dutch National Flag (three-way partition):**
 
 ```rust
-{{#include ../../src/problems/p0075_sort_colors.rs:1:22}}
+{{#include ../../src/problems/p0075_sort_colors.rs:1:19}}
 ```
 
 **Counting sort (bucket):**
 
 ```rust
-{{#include ../../src/problems/p0075_sort_colors.rs:24:39}}
+{{#include ../../src/problems/p0075_sort_colors.rs:21:36}}
 ```
