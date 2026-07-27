@@ -10,4 +10,5 @@ pub mod p0217_contains_duplicate;
 pub mod p0242_valid_anagram;
 pub mod p0705_design_hashset;
 pub mod p0706_design_hashmap;
+pub mod p0912_sort_an_array;
 pub mod p1929_concatenation_of_array;
