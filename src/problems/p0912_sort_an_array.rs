@@ -43,6 +43,35 @@ fn merge(left: &[i32], right: &[i32], out: &mut [i32]) {
     });
 }
 
+// time O(n + range), space O(range)
+pub fn sort_array_counting(mut nums: Vec<i32>) -> Vec<i32> {
+    let Some((min, max)) = min_max(&nums) else {
+        return nums;
+    };
+
+    let span = (max as i64 - min as i64 + 1) as usize;
+    let mut cnt = vec![0u32; span];
+
+    for &x in &nums {
+        cnt[(x - min) as usize] += 1;
+    }
+
+    let mut k = 0;
+    for (offset, &count) in cnt.iter().enumerate() {
+        let count = count as usize;
+        nums[k..k + count].fill(min + offset as i32);
+        k += count;
+    }
+
+    nums
+}
+
+fn min_max(v: &[i32]) -> Option<(i32, i32)> {
+    let mut it = v.iter().copied();
+    let first = it.next()?;
+    Some(it.fold((first, first), |(lo, hi), x| (lo.min(x), hi.max(x))))
+}
+
 // time O(n log n) expected, space O(log n) expected
 pub fn sort_array_quicksort(mut nums: Vec<i32>) -> Vec<i32> {
     let mut rng = Rng::new();
@@ -136,6 +165,39 @@ mod tests {
     #[test]
     fn test_negative_numbers() {
         assert_eq!(sort_array(vec![-3, -1, -2]), vec![-3, -2, -1]);
+    }
+
+    #[test]
+    fn test_unsorted_counting() {
+        assert_eq!(sort_array_counting(vec![5, 2, 3, 1]), vec![1, 2, 3, 5]);
+    }
+
+    #[test]
+    fn test_with_duplicates_counting() {
+        assert_eq!(
+            sort_array_counting(vec![5, 1, 1, 2, 0, 0]),
+            vec![0, 0, 1, 1, 2, 5]
+        );
+    }
+
+    #[test]
+    fn test_already_sorted_counting() {
+        assert_eq!(sort_array_counting(vec![1, 2, 3]), vec![1, 2, 3]);
+    }
+
+    #[test]
+    fn test_reverse_sorted_counting() {
+        assert_eq!(sort_array_counting(vec![3, 2, 1]), vec![1, 2, 3]);
+    }
+
+    #[test]
+    fn test_single_element_counting() {
+        assert_eq!(sort_array_counting(vec![1]), vec![1]);
+    }
+
+    #[test]
+    fn test_negative_numbers_counting() {
+        assert_eq!(sort_array_counting(vec![-3, -1, -2]), vec![-3, -2, -1]);
     }
 
     #[test]

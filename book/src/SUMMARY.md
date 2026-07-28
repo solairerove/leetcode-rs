@@ -11,3 +11,4 @@
 - [169. Majority Element](./p0169_majority_element.md)
 - [705. Design HashSet](./p0705_design_hashset.md)
 - [706. Design HashMap](./p0706_design_hashmap.md)
+- [912. Sort an Array](./p0912_sort_an_array.md)
