@@ -24,8 +24,7 @@ pub fn longest_common_prefix_sorted(strs: Vec<String>) -> String {
 
     let first = strs[0].as_bytes();
     let last = strs[strs.len() - 1].as_bytes();
-    let n = first.len().min(last.len());
-    for i in 0..n {
+    for i in 0..first.len() {
         if first[i] != last[i] {
             return strs[0][..i].to_string();
         }

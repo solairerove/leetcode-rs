@@ -11,5 +11,5 @@ Find the longest common prefix string amongst an array of strings.
 **Sort approach** (only first/last need comparing after sorting):
 
 ```rust
-{{#include ../../src/problems/p0014_longest_common_prefix.rs:17:35}}
+{{#include ../../src/problems/p0014_longest_common_prefix.rs:17:34}}
 ```
