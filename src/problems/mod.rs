@@ -8,6 +8,7 @@ pub mod p0169_majority_element;
 pub mod p0206_reverse_linked_list;
 pub mod p0217_contains_duplicate;
 pub mod p0242_valid_anagram;
+pub mod p0347_top_k_frequent_elements;
 pub mod p0705_design_hashset;
 pub mod p0706_design_hashmap;
 pub mod p0912_sort_an_array;
