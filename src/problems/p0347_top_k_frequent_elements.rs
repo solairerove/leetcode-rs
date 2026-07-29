@@ -1,7 +1,7 @@
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 
-// time O(n + span log k), space O(span)
+// time O(n + span log k), space O(span + k)
 pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
     let Some((min, max)) = min_max(&nums) else {
         return nums;
@@ -15,14 +15,7 @@ pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
 
     let top_k = top_k_heap(&cnt, k as usize);
 
-    let mut res = vec![];
-    for (offset, _) in cnt.iter().enumerate() {
-        if top_k.contains(&offset) {
-            res.push(min + offset as i32);
-        }
-    }
-
-    res
+    top_k.into_iter().map(|offset| min + offset as i32).collect()
 }
 
 fn top_k_heap(cnt: &[u32], k: usize) -> Vec<usize> {
