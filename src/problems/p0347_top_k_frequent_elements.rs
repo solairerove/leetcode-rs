@@ -2,8 +2,36 @@ use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 use std::collections::HashMap;
 
-// time O(n log k), space O(n)
+// time O(n), space O(n)
 pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
+    let k = k as usize;
+    let mut count = HashMap::new();
+    let mut freq = vec![vec![]; nums.len() + 1];
+    for &num in &nums {
+        *count.entry(num).or_insert(0usize) += 1;
+    }
+
+    for (&num, &cnt) in &count {
+        freq[cnt].push(num);
+    }
+
+    let mut res = Vec::new();
+    for i in (1..freq.len()).rev() {
+        for &num in &freq[i] {
+            res.push(num);
+            if res.len() == k {
+                return res;
+            }
+        }
+    }
+
+    res
+}
+
+// TBD: quickselect with Dutch national flag partition
+
+// time O(n log k), space O(n)
+pub fn top_k_frequent_heap(nums: Vec<i32>, k: i32) -> Vec<i32> {
     let k = k as usize;
     let mut count = HashMap::new();
     for &num in &nums {
@@ -20,8 +48,6 @@ pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
 
     heap.into_iter().map(|Reverse((_, num))| num).collect()
 }
-
-// TBD: quickselect with Dutch national flag partition
 
 // time O(n + span log k), space O(span + k)
 pub fn top_k_frequent_bucket_heap(nums: Vec<i32>, k: i32) -> Vec<i32> {
@@ -113,6 +139,35 @@ mod tests {
     #[test]
     fn all_unique() {
         let res = top_k_frequent(vec![5, 3, 1, 9], 4);
+        assert_eq!(as_set(res), as_set(vec![5, 3, 1, 9]));
+    }
+
+    #[test]
+    fn heap_example_case() {
+        let res = top_k_frequent_heap(vec![1, 1, 1, 2, 2, 3], 2);
+        assert_eq!(as_set(res), as_set(vec![1, 2]));
+    }
+
+    #[test]
+    fn heap_single_element() {
+        assert_eq!(top_k_frequent_heap(vec![1], 1), vec![1]);
+    }
+
+    #[test]
+    fn heap_k_equals_two() {
+        let res = top_k_frequent_heap(vec![4, 1, -1, 2, -1, 2, 3], 2);
+        assert_eq!(as_set(res), as_set(vec![-1, 2]));
+    }
+
+    #[test]
+    fn heap_negative_numbers() {
+        let res = top_k_frequent_heap(vec![-1, -1, -2, -2, -2, -3], 2);
+        assert_eq!(as_set(res), as_set(vec![-2, -1]));
+    }
+
+    #[test]
+    fn heap_all_unique() {
+        let res = top_k_frequent_heap(vec![5, 3, 1, 9], 4);
         assert_eq!(as_set(res), as_set(vec![5, 3, 1, 9]));
     }
 

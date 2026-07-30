@@ -7,6 +7,7 @@
 - [75. Sort Colors](./p0075_sort_colors.md)
 - [1929. Concatenation of Array](./p1929_concatenation_of_array.md)
 - [242. Valid Anagram](./p0242_valid_anagram.md)
+- [347. Top K Frequent Elements](./p0347_top_k_frequent_elements.md)
 - [217. Contains Duplicate](./p0217_contains_duplicate.md)
 - [169. Majority Element](./p0169_majority_element.md)
 - [705. Design HashSet](./p0705_design_hashset.md)
