@@ -1,10 +1,12 @@
 use std::collections::BTreeSet;
 
+#[allow(dead_code)]
 struct MyHashSet {
     buckets: Vec<BTreeSet<i32>>,
     size: usize,
 }
 
+#[allow(dead_code)]
 impl MyHashSet {
     // time O(1), space O(n)
     pub fn new() -> Self {
@@ -45,10 +47,12 @@ impl MyHashSet {
  * let ret_3: bool = obj.contains(key);
  */
 
+#[allow(dead_code)]
 struct MyHashSetLinkedList {
     buckets: Vec<Vec<i32>>,
 }
 
+#[allow(dead_code)]
 impl MyHashSetLinkedList {
     // time O(1), space O(n)
     pub fn new() -> Self {
@@ -85,10 +89,12 @@ impl MyHashSetLinkedList {
     }
 }
 
+#[allow(dead_code)]
 struct MyHashSetBitset {
     set: Vec<u32>,
 }
 
+#[allow(dead_code)]
 impl MyHashSetBitset {
     // time O(1), space O(n)
     pub fn new() -> Self {

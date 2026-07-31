@@ -13,3 +13,5 @@
 - [705. Design HashSet](./p0705_design_hashset.md)
 - [706. Design HashMap](./p0706_design_hashmap.md)
 - [912. Sort an Array](./p0912_sort_an_array.md)
+- [724. Find Pivot Index](./p0724_find_pivot_index.md)
+- [1991. Find the Middle Index in Array](./p1991_find_the_middle_index_in_array.md)

@@ -14,3 +14,4 @@ pub mod p0706_design_hashmap;
 pub mod p0724_find_pivot_index;
 pub mod p0912_sort_an_array;
 pub mod p1929_concatenation_of_array;
+pub mod p1991_find_the_middle_index_in_array;
