@@ -11,5 +11,6 @@ pub mod p0242_valid_anagram;
 pub mod p0347_top_k_frequent_elements;
 pub mod p0705_design_hashset;
 pub mod p0706_design_hashmap;
+pub mod p0724_find_pivot_index;
 pub mod p0912_sort_an_array;
 pub mod p1929_concatenation_of_array;
